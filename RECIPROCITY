@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Mirror</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="stage" role="img" aria-label="A dark space with a luminous geometric mirror reflecting your movement"></canvas>
+
+<div class="hud">
+  <header class="top">
+    <div class="brand">
+      <h1>THE MIRROR</h1>
+      <p>Every action expects a response.</p>
+    </div>
+    <div class="controls">
+      <div class="seg" role="group" aria-label="Experimental condition">
+        <button type="button" data-cond="A" aria-pressed="true">A · Immediate</button>
+        <button type="button" data-cond="B" aria-pressed="false">B · History</button>
+      </div>
+      <button type="button" id="btn-pause">Pause</button>
+      <button type="button" id="btn-reset">Reset</button>
+      <button type="button" id="btn-help" aria-label="Show instructions">?</button>
+    </div>
+  </header>
+
+  <footer class="bottom">
+    <div class="readout">
+      <span id="glyph" aria-hidden="true">○</span>
+      <div>
+        <strong id="state-name">Reflection</strong>
+        <span id="state-note">Following you.</span>
+      </div>
+    </div>
+    <div class="memory-wrap">
+      <ol class="memory" aria-label="Interaction history, most recent first">
+        <li class="slot"><span class="arrow">–</span><span class="bars"><i></i><i></i><i></i></span></li>
+        <li class="slot"><span class="arrow">–</span><span class="bars"><i></i><i></i><i></i></span></li>
+        <li class="slot"><span class="arrow">–</span><span class="bars"><i></i><i></i><i></i></span></li>
+      </ol>
+      <span id="mem-label">Memory: off</span>
+    </div>
+    <p class="hint">Move · touch · arrows / WASD (Shift = stronger) &nbsp;|&nbsp; P pause · R reset · 1 / 2 condition</p>
+  </footer>
+</div>
+
+<div id="paused-badge" hidden>PAUSED</div>
+
+<section id="intro" class="overlay" role="dialog" aria-modal="true" aria-labelledby="intro-title">
+  <div class="card">
+    <h2 id="intro-title">The Mirror</h2>
+    <p>A luminous shape reflects you. Find out how your actions shape what it does next. There is no score and nothing to win.</p>
+    <ul>
+      <li><b>Pointer:</b> move the cursor across the space.</li>
+      <li><b>Touch:</b> drag a finger across the screen.</li>
+      <li><b>Keyboard:</b> arrow keys or WASD to move; hold Shift for stronger movement.</li>
+      <li><b>Pause briefly</b> between movements. Each movement that stops counts as one completed turn.</li>
+      <li><b>P</b> pause/resume · <b>R</b> reset · <b>1 / 2</b> switch condition.</li>
+    </ul>
+    <p class="small">Condition A: the mirror reacts only to what you do now. Condition B: it also remembers your last three completed movements. Switching condition restarts the attempt.</p>
+    <p class="small">States are shown by shape and motion as well as colour: round = Reflection, hexagon = Adaptation, triangle or diamond = Divergence.</p>
+    <button type="button" id="btn-begin">Begin</button>
+  </div>
+</section>
+
+<div id="live" class="sr-only" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>
