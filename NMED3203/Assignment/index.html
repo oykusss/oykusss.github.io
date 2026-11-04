@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Running Out</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Running Out</h1>
+    <p class="instruction">
+      Press and hold on the canvas to grow a shape, release to stamp it. Every mark claims its space, and ink is limited.
+      <span class="keys">Keyboard: <kbd>1</kbd>–<kbd>4</kbd> shape · arrows move · hold <kbd>Space</kbd> to grow · <kbd>M</kbd> mode · <kbd>R</kbd> restart</span>
+    </p>
+  </header>
+
+  <main>
+    <!-- Tool buttons are generated from knobs.tools in script.js -->
+    <div id="toolbar" class="toolbar" role="toolbar" aria-label="Shape"></div>
+
+    <div class="inkbar">
+      <label for="ink" id="ink-text">Ink</label>
+      <progress id="ink" max="100" value="100"></progress>
+    </div>
+
+    <div class="stage">
+      <canvas id="canvas" tabindex="0" aria-label="Drawing canvas. Arrow keys move the cursor, hold Space to grow a shape, release to stamp."></canvas>
+    </div>
+
+    <p id="hint" class="hint" aria-hidden="true"></p>
+    <p id="status" class="status" aria-live="polite"></p>
+    <p id="summary" class="summary" hidden></p>
+
+    <div class="controls">
+      <button id="mode" class="control" type="button" aria-pressed="true">Mode: Claimed (M)</button>
+      <button id="restart" class="control" type="button">Restart (R)</button>
+    </div>
+  </main>
+
+  <footer>
+    NMED 3203 · Premises: Agency × Possibility ·
+    Built from scratch; the "knobs" settings structure follows the Interactive Media Applications lab experiments. See README for credits and AI note.
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
